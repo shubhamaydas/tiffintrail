@@ -3,346 +3,146 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tiffin Trails — Home-cooked meals, delivered</title>
-<meta name="description" content="Home-cooked Indian meals delivered fresh to your door in returnable steel tiffin boxes, made by real home cooks in your neighbourhood. Join the waitlist.">
+<title>Tiffin Trail — Home-cooked meals, coming soon</title>
+<meta name="description" content="Tiffin Trail is bringing home-cooked meals to your door in returnable steel tiffin boxes. Join the waitlist to be first to know when we launch.">
 
-<!-- Open Graph -->
-<meta property="og:title" content="Tiffin Trails — Home-cooked. Delivered.">
-<meta property="og:description" content="Real food, real kitchens. Every tiffin made from scratch by a home cook in your neighbourhood.">
+<meta property="og:title" content="Tiffin Trail — Coming soon">
+<meta property="og:description" content="Home-cooked meals, delivered in returnable steel tiffin boxes. Join the waitlist.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://tiffintrail.com/">
-<meta property="og:image" content="https://images.unsplash.com/photo-1680993032090-1ef7ea9b51e5?w=1200&q=80&auto=format&fit=crop">
 
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-/* ============================================================
-   TIFFIN TRAILS — DESIGN TOKENS
-   Grounded in the steel dabba (tiffin carrier): brushed steel,
-   turmeric, curry leaf, and the dabbawala routing-code system.
-   ============================================================ */
 :root{
-  --ink:        #23201B;
-  --ink-soft:   #4A453D;
-  --paper:      #E7E2D3;
-  --paper-high: #F1EDE1;
-  --steel:      #9AA39B;
-  --steel-dark: #586059;
-  --turmeric:   #D9A02C;
-  --turmeric-d: #B9821A;
-  --curry:      #4B6043;
-  --curry-d:    #384A32;
-  --brick:      #9C3B24;
-  --veg:        #2F6B33;
+  --ink:       #1C1C1C;
+  --ink-soft:  #5A5A5A;
+  --line:      #E3E1DC;
+  --paper:     #FFFFFF;
+  --paper-alt: #FAFAF8;
+  --accent:    #C4622D;
+  --accent-d:  #A24F22;
 
-  --display: 'Bricolage Grotesque', 'Arial Black', sans-serif;
-  --body:    'Public Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  --mono:    'IBM Plex Mono', 'Courier New', monospace;
-
-  --container: 1160px;
-  --radius-tier: 28px;
-  --radius-sm: 10px;
-
-  --ease: cubic-bezier(.22,.9,.35,1);
+  --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --container: 720px;
 }
 
 *,*::before,*::after{ box-sizing:border-box; }
 html{ scroll-behavior:smooth; }
 @media (prefers-reduced-motion: reduce){
   html{ scroll-behavior:auto; }
-  *,*::before,*::after{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important; }
+  *,*::before,*::after{ transition-duration:0.001ms !important; }
 }
 
 body{
   margin:0;
   background:var(--paper);
   color:var(--ink);
-  font-family:var(--body);
+  font-family:var(--font);
   font-size:16px;
-  line-height:1.55;
+  line-height:1.6;
   -webkit-font-smoothing:antialiased;
 }
 
-h1,h2,h3{ font-family:var(--display); margin:0; color:var(--ink); letter-spacing:-0.01em; }
+h1,h2{ margin:0; color:var(--ink); font-weight:700; letter-spacing:-0.01em; }
 p{ margin:0; }
 a{ color:inherit; }
 img,svg{ display:block; max-width:100%; }
 button{ font-family:inherit; cursor:pointer; }
 
-.wrap{ max-width:var(--container); margin:0 auto; padding:0 28px; }
+.wrap{ max-width:var(--container); margin:0 auto; padding:0 24px; }
 
 :focus-visible{
-  outline:3px solid var(--turmeric-d);
+  outline:2px solid var(--accent);
   outline-offset:3px;
   border-radius:4px;
 }
 
-/* ---------- eyebrow / stencil label ---------- */
-.stencil{
-  display:inline-flex; align-items:center; gap:10px;
-  font-family:var(--mono); font-size:12.5px; font-weight:600;
-  letter-spacing:0.14em; text-transform:uppercase;
-  color:var(--curry-d);
-}
-.stencil::before{
-  content:""; width:8px; height:8px; border-radius:2px;
-  background:var(--turmeric); flex:none;
-}
-
 /* ---------- NAV ---------- */
 .nav{
-  position:sticky; top:0; z-index:50;
-  background:rgba(231,226,211,0.86);
-  backdrop-filter:blur(10px);
-  -webkit-backdrop-filter:blur(10px);
-  border-bottom:1px solid rgba(35,32,27,0.1);
+  border-bottom:1px solid var(--line);
 }
 .nav .wrap{
   display:flex; align-items:center; justify-content:space-between;
-  height:76px;
+  height:72px; max-width:960px;
 }
 .brand{ display:flex; align-items:center; gap:10px; text-decoration:none; }
-.brand svg{ width:26px; height:26px; }
-.brand-word{ font-family:var(--display); font-weight:700; font-size:19px; color:var(--ink); }
-.nav-links{ display:flex; align-items:center; gap:34px; list-style:none; margin:0; padding:0; }
-.nav-links a{
-  text-decoration:none; font-size:14.5px; font-weight:600; color:var(--ink-soft);
-  transition:color .2s var(--ease);
-}
-.nav-links a:hover{ color:var(--curry-d); }
+.brand svg{ width:22px; height:22px; }
+.brand-word{ font-weight:700; font-size:17px; color:var(--ink); }
 .nav-cta{
-  background:var(--ink); color:var(--paper-high) !important;
-  padding:10px 20px; border-radius:100px; font-size:14px !important;
+  background:var(--ink); color:var(--paper) !important;
+  padding:9px 18px; border-radius:6px; font-size:14px; font-weight:600;
+  text-decoration:none;
 }
-.nav-cta:hover{ background:var(--curry-d) !important; }
-.nav-toggle{
-  display:none; background:none; border:none; padding:8px;
-}
-.nav-toggle span,.nav-toggle span::before,.nav-toggle span::after{
-  content:""; display:block; width:22px; height:2px; background:var(--ink);
-  position:relative; transition:.25s var(--ease);
-}
-.nav-toggle span::before{ position:absolute; top:-7px; }
-.nav-toggle span::after{ position:absolute; top:7px; }
-
-@media (max-width: 860px){
-  .nav-links{
-    position:fixed; inset:76px 0 auto 0; background:var(--paper-high);
-    flex-direction:column; align-items:flex-start; gap:0;
-    padding:8px 28px 20px; border-bottom:1px solid rgba(35,32,27,0.1);
-    transform:translateY(-8px); opacity:0; pointer-events:none;
-    transition:.25s var(--ease);
-  }
-  .nav-links.open{ transform:translateY(0); opacity:1; pointer-events:auto; }
-  .nav-links li{ width:100%; border-top:1px solid rgba(35,32,27,0.08); }
-  .nav-links a{ display:block; padding:14px 0; }
-  .nav-toggle{ display:block; }
-}
+.nav-cta:hover{ background:var(--accent-d) !important; }
 
 /* ---------- HERO ---------- */
-.hero{ padding:64px 0 40px; overflow:hidden; }
-.hero .wrap{
-  display:grid; grid-template-columns:1.05fr 0.85fr; gap:50px; align-items:center;
+.hero{ padding:88px 0 56px; text-align:center; }
+.eyebrow{
+  display:inline-block; font-size:13px; font-weight:600; letter-spacing:.04em;
+  color:var(--accent-d); background:#FBEDE3; padding:6px 14px; border-radius:100px;
+  margin-bottom:24px;
 }
-.hero-eyebrow{ margin-bottom:22px; }
 .hero h1{
-  font-size:clamp(2.6rem, 5.2vw, 4.3rem); line-height:1.03; font-weight:700;
+  font-size:clamp(2.1rem, 4.2vw, 3rem); line-height:1.15;
 }
-.hero h1 em{ font-style:normal; color:var(--curry-d); }
 .hero-sub{
-  margin-top:22px; max-width:46ch; font-size:1.13rem; color:var(--ink-soft);
+  margin:20px auto 0; max-width:52ch; font-size:1.08rem; color:var(--ink-soft);
 }
-.hero-form{ margin-top:34px; }
-.form-row{ display:flex; gap:10px; flex-wrap:wrap; }
+
+/* ---------- FORM ---------- */
+.hero-form{ margin-top:36px; }
+.form-row{ display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
 .form-row input{
-  flex:1 1 180px; min-width:0;
-  padding:15px 18px; border-radius:100px; border:1.5px solid rgba(35,32,27,0.22);
-  background:var(--paper-high); font-family:var(--body); font-size:15px; color:var(--ink);
+  flex:1 1 260px; min-width:0; max-width:320px;
+  padding:13px 16px; border-radius:6px; border:1.5px solid var(--line);
+  background:var(--paper); font-family:var(--font); font-size:15px; color:var(--ink);
 }
-.form-row input:focus{ border-color:var(--curry); }
+.form-row input:focus{ border-color:var(--accent); }
 .btn-primary{
-  border:none; background:var(--turmeric); color:var(--ink);
-  padding:15px 26px; border-radius:100px; font-weight:700; font-size:15px;
-  white-space:nowrap; transition:transform .18s var(--ease), background .18s var(--ease);
+  border:none; background:var(--accent); color:#fff;
+  padding:13px 24px; border-radius:6px; font-weight:600; font-size:15px;
+  white-space:nowrap; transition:background .15s ease;
 }
-.btn-primary:hover{ background:var(--turmeric-d); transform:translateY(-2px); }
-.btn-primary:disabled{ opacity:.7; cursor:progress; transform:none; }
+.btn-primary:hover{ background:var(--accent-d); }
+.btn-primary:disabled{ opacity:.7; cursor:progress; }
 .form-note{ margin-top:14px; font-size:13px; color:var(--ink-soft); }
 .form-error{
-  display:none; margin:10px 0 0; font-size:13.5px; font-weight:600; color:var(--brick);
+  display:none; margin:10px 0 0; font-size:13.5px; font-weight:600; color:#B3261E;
 }
 .form-error.show{ display:block; }
-.form-row input.invalid{ border-color:var(--brick); }
+.form-row input.invalid{ border-color:#B3261E; }
 .form-success{
-  display:none; align-items:center; gap:10px; margin-top:18px; padding:14px 18px; border-radius:var(--radius-sm);
-  background:rgba(75,96,67,0.12); color:var(--curry-d); font-weight:600; font-size:14.5px;
+  display:none; align-items:center; justify-content:center; gap:10px; margin-top:18px;
+  padding:14px 18px; border-radius:6px;
+  background:#F1F6EF; color:#2F6B33; font-weight:600; font-size:14.5px;
 }
 .form-success svg{ flex:none; }
 .form-success.show{ display:flex; }
 .hide-on-submit.hidden{ display:none; }
 
-/* hero illustration */
-.hero-art{ position:relative; display:flex; justify-content:center; }
-.tiffin-hero{ width:min(320px, 80%); }
-.steam path{
-  stroke:var(--steel-dark); stroke-width:3; fill:none; stroke-linecap:round;
-  opacity:0; transform-origin:bottom;
-  animation:rise 4.5s ease-in-out infinite;
-}
-.steam path:nth-child(2){ animation-delay:1.1s; }
-.steam path:nth-child(3){ animation-delay:2.2s; }
-@keyframes rise{
-  0%{ opacity:0; transform:translateY(6px) scaleY(0.8); }
-  25%{ opacity:.55; }
-  70%{ opacity:0; transform:translateY(-26px) scaleY(1.05); }
-  100%{ opacity:0; }
-}
-
-/* ---------- PHOTO GALLERY STRIP ---------- */
-.photo-strip{ display:flex; gap:16px; margin-top:56px; flex-wrap:wrap; grid-column:1 / -1; }
-.photo-strip figure{ margin:0; flex:1 1 180px; border-radius:18px; overflow:hidden; position:relative; }
-.photo-strip img{ width:100%; height:190px; object-fit:cover; display:block; transition:transform .5s var(--ease); }
-.photo-strip figure:hover img{ transform:scale(1.06); }
-.photo-strip figure:nth-child(2){ margin-top:22px; }
-.photo-strip figure:nth-child(4){ margin-top:22px; }
-@media (max-width: 700px){
-  .photo-strip figure, .photo-strip figure:nth-child(2), .photo-strip figure:nth-child(4){ margin-top:0; flex:1 1 45%; }
-}
-.clasp-divider{ display:flex; align-items:center; gap:0; padding:6px 0 0; }
-.clasp-divider .wrap{ display:flex; align-items:center; width:100%; }
-.clasp-bar{ flex:1; height:2px; background:linear-gradient(90deg, transparent, rgba(35,32,27,0.25), transparent); }
-.clasp-loop{
-  width:14px; height:14px; border-radius:50%; border:2.5px solid var(--ink);
-  background:var(--paper); margin:0 -1px; flex:none;
-}
-
-/* ---------- SECTION SHELL ---------- */
-section{ padding:84px 0; }
-.section-head{ max-width:640px; margin-bottom:52px; }
-.section-head h2{ font-size:clamp(1.9rem, 3.4vw, 2.7rem); margin-top:16px; font-weight:700; }
-.section-head p{ margin-top:14px; color:var(--ink-soft); font-size:1.05rem; }
-
-/* ---------- FEATURE TIERS ---------- */
-.tiers{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
-.tier{
-  background:var(--paper-high); border:1.5px solid rgba(35,32,27,0.1);
-  border-radius:var(--radius-tier) var(--radius-tier) 14px 14px;
-  padding:34px 28px 30px; position:relative;
-  transition:transform .25s var(--ease), box-shadow .25s var(--ease);
-}
-.tier:hover{ transform:translateY(-6px); box-shadow:0 18px 34px -18px rgba(35,32,27,0.35); }
-.tier::before{
-  content:""; position:absolute; top:-9px; left:28px; right:28px; height:16px;
-  background:var(--steel); border-radius:10px 10px 0 0;
-  border:1.5px solid rgba(35,32,27,0.1); border-bottom:none;
-}
-.tier-num{ font-family:var(--mono); font-size:12.5px; color:var(--steel-dark); font-weight:600; letter-spacing:.1em; }
-.tier h3{ font-size:1.28rem; margin:14px 0 10px; font-weight:700; }
-.tier p{ color:var(--ink-soft); font-size:.98rem; }
-
-/* ---------- HOW IT WORKS ---------- */
-.steps{ display:grid; gap:0; }
-.step{
-  display:grid; grid-template-columns:64px 1fr; gap:22px; padding:26px 0;
-  border-top:1.5px solid rgba(35,32,27,0.12);
-}
-.step:last-child{ border-bottom:1.5px solid rgba(35,32,27,0.12); }
-.step-code{
-  font-family:var(--mono); font-weight:600; color:var(--turmeric-d); font-size:15px; padding-top:2px;
-}
-.step h3{ font-size:1.15rem; font-weight:700; margin-bottom:6px; }
-.step p{ color:var(--ink-soft); max-width:60ch; }
-
-/* ---------- MENU / TRAIL ---------- */
-.menu-grid{ display:grid; grid-template-columns:repeat(auto-fill, minmax(230px,1fr)); gap:20px; }
-.dish{
-  background:var(--paper-high); border:1.5px solid rgba(35,32,27,0.1);
-  border-radius:26px;
-  padding:0 0 24px; position:relative; overflow:hidden;
-}
-.dish-photo{ width:100%; height:150px; object-fit:cover; display:block; }
-.dish .dish-top{ display:flex; align-items:center; justify-content:space-between; padding:16px 22px 0; margin-bottom:14px; }
-.dish h3{ font-size:1.08rem; font-weight:700; margin-bottom:6px; padding:0 22px; }
-.dish p{ font-size:.92rem; color:var(--ink-soft); padding:0 22px; }
-.fssai-mark{ width:20px; height:20px; border-radius:3px; display:flex; align-items:center; justify-content:center; flex:none; }
-.fssai-mark.veg{ border:2px solid var(--veg); }
-.fssai-mark.veg::after{ content:""; width:9px; height:9px; border-radius:50%; background:var(--veg); }
-.fssai-mark.nonveg{ border:2px solid var(--brick); }
-.fssai-mark.nonveg::after{ content:""; width:0; height:0; border-left:5px solid transparent; border-right:5px solid transparent; border-bottom:8px solid var(--brick); }
-.trail-code{ font-family:var(--mono); font-size:11.5px; color:var(--steel-dark); letter-spacing:.05em; }
-.dish h3{ font-size:1.08rem; font-weight:700; margin-bottom:6px; }
-.dish p{ font-size:.92rem; color:var(--ink-soft); }
-
-/* ---------- ABOUT / COOKS / SUSTAINABILITY (alt tier) ---------- */
-.alt{ background:var(--paper-high); }
-.split{ display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; }
-.split.reverse .split-media{ order:2; }
-.split h2{ font-size:clamp(1.7rem,3vw,2.3rem); font-weight:700; margin-bottom:16px; }
-.split p{ color:var(--ink-soft); font-size:1.02rem; }
-.split p + p{ margin-top:14px; }
-.stat-row{ display:flex; gap:34px; margin-top:26px; flex-wrap:wrap; }
-.stat b{ display:block; font-family:var(--display); font-size:1.9rem; color:var(--curry-d); }
-.stat span{ font-size:.85rem; color:var(--ink-soft); }
-.split-media{
-  background:var(--steel); border-radius:var(--radius-tier);
-  aspect-ratio:4/3; display:flex; align-items:center; justify-content:center;
-  border:1.5px solid rgba(35,32,27,0.12);
-}
-.split-media svg{ width:58%; }
-
-/* ---------- FINAL CTA ---------- */
-.cta-band{ background:var(--curry-d); color:var(--paper-high); border-radius:var(--radius-tier); padding:64px 48px; text-align:center; }
-.cta-band h2{ color:var(--paper-high); font-size:clamp(1.9rem,3.6vw,2.6rem); }
-.cta-band .form-row{ justify-content:center; margin-top:30px; max-width:560px; margin-left:auto; margin-right:auto; }
-.cta-band .form-row input{ background:rgba(241,237,225,0.95); border:none; }
-.cta-band .form-note{ color:rgba(241,237,225,0.7); }
-.cta-band .form-success{ background:rgba(241,237,225,0.15); color:var(--paper-high); }
-.cta-band .form-error{ color:#F0C4B8; }
+/* ---------- INFO ---------- */
+.info{ padding:56px 0; border-top:1px solid var(--line); }
+.info .wrap{ display:grid; gap:36px; }
+.info-item h2{ font-size:1.15rem; margin-bottom:8px; }
+.info-item p{ color:var(--ink-soft); font-size:.98rem; }
 
 /* ---------- FOOTER ---------- */
-footer{ background:var(--ink); color:rgba(241,237,225,0.85); padding:64px 0 28px; }
-.foot-top{ display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:40px; padding-bottom:44px; border-bottom:1px solid rgba(241,237,225,0.14); }
-.foot-brand svg{ width:26px; height:26px; margin-bottom:16px; }
-.foot-brand p{ max-width:34ch; color:rgba(241,237,225,0.6); font-size:.94rem; }
-footer h4{ font-family:var(--mono); font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:rgba(241,237,225,0.5); margin-bottom:16px; }
-.foot-links{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:11px; }
-.foot-links a{ text-decoration:none; color:rgba(241,237,225,0.82); font-size:.94rem; }
-.foot-links a:hover{ color:var(--turmeric); }
-.foot-social{ display:flex; gap:12px; margin-top:16px; }
-.foot-social a{
-  width:36px; height:36px; border-radius:50%; border:1.5px solid rgba(241,237,225,0.25);
-  display:flex; align-items:center; justify-content:center; transition:.2s var(--ease);
+footer{ border-top:1px solid var(--line); padding:32px 0; }
+.foot-row{
+  display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;
+  font-size:13px; color:var(--ink-soft);
 }
-.foot-social a:hover{ border-color:var(--turmeric); background:rgba(217,160,44,0.12); }
-.foot-social svg{ width:16px; height:16px; }
-.foot-bottom{
-  padding-top:26px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px;
-  font-size:.82rem; color:rgba(241,237,225,0.45);
-}
-.foot-bottom a{ color:rgba(241,237,225,0.45); text-decoration:none; margin-left:16px; }
-.foot-bottom a:hover{ color:var(--turmeric); }
+.foot-row a{ text-decoration:none; color:var(--ink-soft); }
+.foot-row a:hover{ color:var(--accent-d); }
 
-/* ---------- reveal on scroll ---------- */
-.reveal{ opacity:0; transform:translateY(18px); transition:opacity .7s var(--ease), transform .7s var(--ease); }
-.reveal.in{ opacity:1; transform:translateY(0); }
-
-/* ---------- responsive ---------- */
-@media (max-width: 900px){
-  .hero .wrap{ grid-template-columns:1fr; }
-  .hero-art{ order:-1; margin-bottom:8px; }
-  .tiers{ grid-template-columns:1fr; }
-  .split, .split.reverse{ grid-template-columns:1fr; }
-  .split.reverse .split-media{ order:0; }
-  .foot-top{ grid-template-columns:1fr; }
-  .cta-band{ padding:48px 26px; }
-}
 @media (max-width: 520px){
-  .form-row{ flex-direction:column; }
-  .form-row .btn-primary{ width:100%; }
+  .form-row{ flex-direction:column; align-items:stretch; }
+  .form-row input{ max-width:none; }
 }
 </style>
 </head>
@@ -351,256 +151,88 @@ footer h4{ font-family:var(--mono); font-size:12px; letter-spacing:.12em; text-t
 <nav class="nav">
   <div class="wrap">
     <a href="#top" class="brand">
-      <svg viewBox="0 0 24 24" fill="none" stroke="#23201B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#1C1C1C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <path d="M9 3c-1 1 1 2 0 3"/>
         <path d="M15 3c-1 1 1 2 0 3"/>
         <path d="M3 11h18"/>
         <path d="M4 11a8 6 0 0 0 16 0"/>
       </svg>
-      <span class="brand-word">Tiffin Trails</span>
+      <span class="brand-word">Tiffin Trail</span>
     </a>
-    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" id="navToggle"><span></span></button>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#about">About</a></li>
-      <li><a href="#how-it-works">How it Works</a></li>            <li><a href="#waitlist" class="nav-cta">Join Waitlist</a></li>
-    </ul>
+    <a href="#waitlist" class="nav-cta">Join Waitlist</a>
   </div>
 </nav>
 
 <main id="top">
 
-  <!-- HERO -->
   <section class="hero">
     <div class="wrap">
-      <div>
-        <div class="stencil hero-eyebrow">Launching soon &middot; Kolkata</div>
-        <h1>Real food, <em>real kitchens.</em></h1>
-        <p class="hero-sub">Every tiffin is made from scratch by a home cook in your neighbourhood. No shortcuts, no reheated batch-cooking — just the kind of food that makes you call home on a Tuesday.</p>
+      <span class="eyebrow">Coming soon</span>
+      <h1>Home-cooked meals, delivered to your door.</h1>
+      <p class="hero-sub">We're building a way to get real, home-cooked meals to you — served in a returnable steel tiffin box, no single-use packaging. We're not live yet. Join the waitlist and we'll email you the moment we are.</p>
 
-        <form class="hero-form join-form" id="waitlistForm" novalidate>
-          <div class="form-row hide-on-submit">
-            <label class="visually-hidden" for="hemail">Email address</label>
-            <input type="email" id="hemail" name="email" placeholder="Enter your email" required inputmode="email" autocomplete="email">
-            <button type="submit" class="btn-primary">Join the Waitlist</button>
-          </div>
-          <p class="form-error" role="alert"></p>
-          <p class="form-note hide-on-submit">No spam, ever. Just one email, the day we start delivering near you.</p>
-          <div class="form-success" role="status">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
-            <span>You're on the trail — we'll email you the moment we launch near you.</span>
-          </div>
-        </form>
-      </div>
-
-      <div class="hero-art" aria-hidden="true">
-        <svg class="tiffin-hero" viewBox="0 0 240 300" xmlns="http://www.w3.org/2000/svg">
-          <g class="steam">
-            <path d="M95 46 C88 36, 102 30, 95 20"/>
-            <path d="M120 46 C113 36, 127 30, 120 18"/>
-            <path d="M145 46 C138 36, 152 30, 145 20"/>
-          </g>
-          <path d="M78 56 C78 26, 162 26, 162 56" stroke="#23201B" stroke-width="6" stroke-linecap="round" fill="none"/>
-          <circle cx="120" cy="30" r="7" fill="#23201B"/>
-          <rect x="58" y="52" width="124" height="30" rx="15" fill="#D9A02C" stroke="#23201B" stroke-width="5"/>
-          <rect x="48" y="80" width="144" height="54" rx="10" fill="#9AA39B" stroke="#23201B" stroke-width="5"/>
-          <line x1="48" y1="107" x2="192" y2="107" stroke="#23201B" stroke-width="2" opacity="0.3"/>
-          <rect x="42" y="132" width="156" height="58" rx="10" fill="#4B6043" stroke="#23201B" stroke-width="5"/>
-          <line x1="42" y1="161" x2="198" y2="161" stroke="#23201B" stroke-width="2" opacity="0.3"/>
-          <rect x="36" y="188" width="168" height="62" rx="12" fill="#9AA39B" stroke="#23201B" stroke-width="5"/>
-          <line x1="36" y1="219" x2="204" y2="219" stroke="#23201B" stroke-width="2" opacity="0.3"/>
-          <rect x="112" y="52" width="16" height="198" rx="6" fill="#23201B" opacity="0.9"/>
-          <rect x="30" y="252" width="180" height="10" rx="5" fill="#23201B" opacity="0.15"/>
-        </svg>
-      </div>
-
-      <div class="photo-strip reveal" aria-hidden="false">
-        <figure><img src="https://images.unsplash.com/photo-1728910156510-77488f19b152?w=500&q=75&auto=format&fit=crop" alt="A spread of home-cooked Indian dishes on a table" loading="lazy"></figure>
-        <figure><img src="https://images.unsplash.com/photo-1680993032090-1ef7ea9b51e5?w=500&q=75&auto=format&fit=crop" alt="A steel plate with rice and assorted curries" loading="lazy"></figure>
-        <figure><img src="https://images.unsplash.com/photo-1625398407796-82650a8c135f?w=500&q=75&auto=format&fit=crop" alt="Rice served on a green plate" loading="lazy"></figure>
-        <figure><img src="https://images.unsplash.com/photo-1596797038530-2c107229654b?w=500&q=75&auto=format&fit=crop" alt="A home cook's curry simmering in a pot" loading="lazy"></figure>
-        <figure><img src="https://images.unsplash.com/photo-1716816211590-c15a328a5ff0?w=500&q=75&auto=format&fit=crop" alt="A table topped with Indian spices" loading="lazy"></figure>
-      </div>
+      <form class="hero-form join-form" id="waitlistForm" novalidate>
+        <div class="form-row hide-on-submit">
+          <label class="visually-hidden" for="hemail">Email address</label>
+          <input type="email" id="hemail" name="email" placeholder="Enter your email" required inputmode="email" autocomplete="email">
+          <button type="submit" class="btn-primary">Join the Waitlist</button>
+        </div>
+        <p class="form-error" role="alert"></p>
+        <p class="form-note hide-on-submit">No spam. Just one email, the day we launch.</p>
+        <div class="form-success" role="status">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+          <span>You're on the list — we'll email you when we launch.</span>
+        </div>
+      </form>
     </div>
   </section>
 
-  <div class="clasp-divider" aria-hidden="true"><div class="wrap"><div class="clasp-bar"></div><div class="clasp-loop"></div><div class="clasp-bar"></div></div></div>
-
-  <section id="features">
+  <section class="info">
     <div class="wrap">
-      <div class="section-head reveal">
-        <div class="stencil">Every tiffin, three promises</div>
-        <h2>What you're actually paying for</h2>
-        <p>No delivery-app filler copy — here's exactly what makes a Tiffin Trails meal different from the usual cloud-kitchen order.</p>
+      <div class="info-item">
+        <h2>What Tiffin Trail is</h2>
+        <p>A home-cooked meal delivery service, currently in development. We're not taking orders yet — this page exists to let people register interest ahead of launch.</p>
       </div>
-      <div class="tiers">
-        <div class="tier reveal">
-          <div class="tier-num">TIER 01</div>
-          <h3>Made fresh daily</h3>
-          <p>No reheated batch cooking. Every tiffin leaves the kitchen the same morning it's made, not the night before.</p>
-        </div>
-        <div class="tier reveal">
-          <div class="tier-num">TIER 02</div>
-          <h3>Local home cooks</h3>
-          <p>We partner with home cooks in your own neighbourhood — the kind of food you'd get at a friend's, not a factory line.</p>
-        </div>
-        <div class="tier reveal">
-          <div class="tier-num">TIER 03</div>
-          <h3>Zero-waste packaging</h3>
-          <p>Delivered in a returnable steel tiffin. We collect it on the next round, clean it, and send it back out. No single-use containers.</p>
-        </div>
+      <div class="info-item">
+        <h2>The tiffin box</h2>
+        <p>Meals will be delivered in a returnable steel tiffin box, collected and reused rather than thrown away. Details on how pickup and delivery will work are still being finalised.</p>
+      </div>
+      <div class="info-item">
+        <h2>Where and when</h2>
+        <p>Launch city, dates, and menu are not yet confirmed. Waitlist members will be the first to hear as these are decided.</p>
       </div>
     </div>
   </section>
 
-  <div class="clasp-divider" aria-hidden="true"><div class="wrap"><div class="clasp-bar"></div><div class="clasp-loop"></div><div class="clasp-bar"></div></div></div>
-
-  <!-- HOW IT WORKS -->
-  <section id="how-it-works">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <div class="stencil">The route</div>
-        <h2>How your tiffin gets to you</h2>
-        <p>Borrowed from a hundred-year-old idea: Mumbai's dabbawalas route thousands of home-cooked lunches a day using nothing but a coded lid. We've rebuilt that same reliability for delivery.</p>
+  <section id="waitlist" class="info" style="border-top:1px solid var(--line);">
+    <div class="wrap" style="text-align:center;">
+      <div class="info-item">
+        <h2>Stay in the loop</h2>
+        <p>Leave your email and we'll reach out with real updates only — no filler.</p>
       </div>
-      <div class="steps">
-        <div class="step reveal">
-          <div class="step-code">01</div>
-          <div><h3>Pick your trail</h3><p>Choose your meals for the week from a rotating menu of regional classics — vegetarian and non-vegetarian, clearly marked.</p></div>
+      <form class="hero-form join-form" id="waitlistForm2" novalidate style="margin-top:24px;">
+        <div class="form-row hide-on-submit">
+          <label class="visually-hidden" for="femail">Email address</label>
+          <input type="email" id="femail" name="email" placeholder="Enter your email" required inputmode="email" autocomplete="email">
+          <button type="submit" class="btn-primary">Join the Waitlist</button>
         </div>
-        <div class="step reveal">
-          <div class="step-code">02</div>
-          <div><h3>A home cook makes it fresh</h3><p>Prepared to order the same morning it's delivered, in a certified home kitchen near you — not a central factory.</p></div>
+        <p class="form-error" role="alert"></p>
+        <p class="form-note hide-on-submit">No spam. Just one email, the day we launch.</p>
+        <div class="form-success" role="status">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+          <span>You're on the list — we'll email you when we launch.</span>
         </div>
-        <div class="step reveal">
-          <div class="step-code">03</div>
-          <div><h3>It arrives in a steel tiffin</h3><p>Hot, sealed, and packed tier by tier, the way your own family would pack it.</p></div>
-        </div>
-        <div class="step reveal">
-          <div class="step-code">04</div>
-          <div><h3>Return the box, repeat</h3><p>We pick up the empty tiffin on your next delivery, wash it, and send it back out. Nothing goes to landfill.</p></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="clasp-divider" aria-hidden="true"><div class="wrap"><div class="clasp-bar"></div><div class="clasp-loop"></div><div class="clasp-bar"></div></div></div>
-
-  <!-- MENU -->
-  <section id="menu">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <div class="stencil">On the trail</div>
-        <h2>Food that feels like home</h2>
-        <p>A rotating selection of regional classics, made fresh every morning. Each dish carries its own trail code — the route it takes from a home kitchen to your door.</p>
-      </div>
-      <div class="menu-grid">
-
-        <div class="dish reveal"><img class="dish-photo" src="https://images.unsplash.com/photo-1668236543090-82eba5ee5976?w=600&q=75&auto=format&fit=crop" alt="Bowl of Palak Paneer, a creamy spinach and paneer curry" loading="lazy"><div class="dish-top"><span class="fssai-mark veg" aria-label="Vegetarian"></span><span class="trail-code">TT-01-V</span></div><h3>Palak Paneer</h3><p>Cottage cheese cubes slow-simmered in a silky spinach gravy with garam masala.</p></div>
-
-        <div class="dish reveal"><img class="dish-photo" src="https://images.unsplash.com/photo-1618449840665-9ed506d73a34?w=600&q=75&auto=format&fit=crop" alt="Bowl of Dal Makhani, slow-cooked black lentils" loading="lazy"><div class="dish-top"><span class="fssai-mark veg" aria-label="Vegetarian"></span><span class="trail-code">TT-02-V</span></div><h3>Dal Makhani</h3><p>Black lentils cooked overnight with butter, cream, and tomatoes.</p></div>
-
-        <div class="dish reveal"><img class="dish-photo" src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=600&q=75&auto=format&fit=crop" alt="Butter Chicken with roti on the side" loading="lazy"><div class="dish-top"><span class="fssai-mark nonveg" aria-label="Non-vegetarian"></span><span class="trail-code">TT-03-NV</span></div><h3>Butter Chicken</h3><p>Tandoor-charred chicken in a velvety tomato-cream sauce.</p></div>
-
-        <div class="dish reveal"><img class="dish-photo" src="https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a?w=600&q=75&auto=format&fit=crop" alt="Hyderabadi Biryani with saffron rice and meat" loading="lazy"><div class="dish-top"><span class="fssai-mark nonveg" aria-label="Non-vegetarian"></span><span class="trail-code">TT-04-NV</span></div><h3>Hyderabadi Biryani</h3><p>Basmati layered with spiced meat, saffron, and fried onions. Dum-cooked.</p></div>
-
-        <div class="dish reveal"><img class="dish-photo" src="https://images.unsplash.com/photo-1657196118354-f25f29fe636d?w=600&q=75&auto=format&fit=crop" alt="Chole Bhature, chickpea curry with fried bread" loading="lazy"><div class="dish-top"><span class="fssai-mark veg" aria-label="Vegetarian"></span><span class="trail-code">TT-05-V</span></div><h3>Chole Bhature</h3><p>Spiced chickpea masala with pillowy deep-fried bread — a Punjab staple.</p></div>
-
-        <div class="dish reveal"><img class="dish-photo" src="https://images.unsplash.com/photo-1694849789325-914b71ab4075?w=600&q=75&auto=format&fit=crop" alt="Aloo Gobi, potato and cauliflower curry" loading="lazy"><div class="dish-top"><span class="fssai-mark veg" aria-label="Vegetarian"></span><span class="trail-code">TT-06-V</span></div><h3>Aloo Gobi</h3><p>Potato and cauliflower tossed with turmeric, cumin, and fresh coriander.</p></div>
-
-        <div class="dish reveal"><img class="dish-photo" src="https://images.unsplash.com/photo-1633383718081-22ac93e3db65?w=600&q=75&auto=format&fit=crop" alt="Rajma Chawal, kidney beans with steamed rice" loading="lazy"><div class="dish-top"><span class="fssai-mark veg" aria-label="Vegetarian"></span><span class="trail-code">TT-07-V</span></div><h3>Rajma Chawal</h3><p>Kidney beans in a thick tomato-onion gravy, served over steamed basmati rice.</p></div>
-
-        <div class="dish reveal"><img class="dish-photo" src="https://images.unsplash.com/photo-1517244683847-7456b63c5969?w=600&q=75&auto=format&fit=crop" alt="Kadai Paneer in a smoky spiced gravy" loading="lazy"><div class="dish-top"><span class="fssai-mark veg" aria-label="Vegetarian"></span><span class="trail-code">TT-08-V</span></div><h3>Kadai Paneer</h3><p>Paneer and peppers in a smoky, coarsely ground spice masala, cooked in an iron wok.</p></div>
-
-        <div class="dish reveal"><img class="dish-photo" src="https://images.unsplash.com/photo-1683533678059-63c6a0e9e3ef?w=600&q=75&auto=format&fit=crop" alt="Sambar Rice served on a banana leaf" loading="lazy"><div class="dish-top"><span class="fssai-mark veg" aria-label="Vegetarian"></span><span class="trail-code">TT-09-V</span></div><h3>Sambar Rice</h3><p>South Indian lentil stew with tamarind, drumstick, and a mustard-curry leaf temper.</p></div>
-
-        <div class="dish reveal"><img class="dish-photo" src="https://images.unsplash.com/photo-1542367592-8849eb950fd8?w=600&q=75&auto=format&fit=crop" alt="Methi Thepla flatbread with rice and stew" loading="lazy"><div class="dish-top"><span class="fssai-mark veg" aria-label="Vegetarian"></span><span class="trail-code">TT-10-V</span></div><h3>Methi Thepla</h3><p>Gujarati flatbread with fresh fenugreek leaves, yogurt, and warming spices.</p></div>
-
-      </div>
-    </div>
-  </section>
-
-  <div class="clasp-divider" aria-hidden="true"><div class="wrap"><div class="clasp-bar"></div><div class="clasp-loop"></div><div class="clasp-bar"></div></div></div>
-
-  <!-- ABOUT -->
-  <section id="about" class="alt">
-    <div class="wrap split reveal">
-      <div>
-        <div class="stencil">Why we started</div>
-        <h2>Home food, for people far from home</h2>
-        <p>Tiffin Trails started with a simple problem: the food that actually feels like home rarely comes from a restaurant kitchen. It comes from someone's mother, aunt, or neighbour — cooked in small batches, with no shortcuts.</p>
-        <p>We built Tiffin Trails to bring that food to more doors, without turning it into factory food along the way. Every kitchen on our trail is still a home kitchen. Every cook still decides the recipe.</p>
-        <div class="stat-row">
-          <div class="stat"><b>0</b><span>Central factories</span></div>
-          <div class="stat"><b>100%</b><span>Home kitchens</span></div>
-          <div class="stat"><b>1</b><span>Steel tiffin, reused</span></div>
-        </div>
-      </div>
-      <div class="split-media">
-        <img src="https://images.unsplash.com/photo-1716816211590-c15a328a5ff0?w=700&q=75&auto=format&fit=crop" alt="A table topped with an assortment of Indian spices" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;">
-      </div>
-    </div>
-  </section>
-
-  <!-- FINAL CTA -->
-  <section id="waitlist">
-    <div class="wrap">
-      <div class="cta-band reveal">
-        <div class="stencil" style="color:var(--turmeric)">Be among the first to taste</div>
-        <h2 style="margin-top:16px;">Be the first to know</h2>
-        <p style="color:rgba(241,237,225,0.75); margin-top:14px; max-width:48ch; margin-left:auto; margin-right:auto;">We're launching soon. Leave your details and we'll reach out the moment Tiffin Trails is delivering in your area.</p>
-        <form class="join-form" id="waitlistForm2" novalidate>
-          <div class="form-row hide-on-submit">
-            <label class="visually-hidden" for="femail">Email address</label>
-            <input type="email" id="femail" name="email" placeholder="Enter your email" required inputmode="email" autocomplete="email">
-            <button type="submit" class="btn-primary">Join the Waitlist</button>
-          </div>
-          <p class="form-error" role="alert"></p>
-          <p class="form-note hide-on-submit">No spam, ever. Just one email when we're ready to deliver to you.</p>
-          <div class="form-success" role="status">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
-            <span>You're on the trail — we'll email you the moment we launch in your area.</span>
-          </div>
-        </form>
-      </div>
+      </form>
     </div>
   </section>
 
 </main>
 
 <footer>
-  <div class="wrap">
-    <div class="foot-top">
-      <div class="foot-brand">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#F1EDE1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path d="M9 3c-1 1 1 2 0 3"/>
-          <path d="M15 3c-1 1 1 2 0 3"/>
-          <path d="M3 11h18"/>
-          <path d="M4 11a8 6 0 0 0 16 0"/>
-        </svg>
-        <p>Home-cooked Indian meals delivered fresh to your door — made by real cooks in your neighbourhood, served in returnable steel tiffin boxes.</p>
-        <p style="margin-top:10px;font-size:.78rem;color:rgba(241,237,225,0.4);">Photography via Unsplash.</p>
-      </div>
-      <div>
-        <h4>Company</h4>
-        <ul class="foot-links">
-          <li><a href="#about">About Us</a></li>
-          <li><a href="#how-it-works">How It Works</a></li>                  </ul>
-      </div>
-      <div>
-        <h4>Contact</h4>
-        <ul class="foot-links">
-          <li><a href="mailto:hello@tiffintrail.com">hello@tiffintrail.com</a></li>
-        </ul>
-        <div class="foot-social">
-          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
-          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 4h-2a4 4 0 0 0-4 4v3H7v4h2v7h4v-7h3l1-4h-4V8a1 1 0 0 1 1-1h3z"/></svg></a>
-          <a href="#" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></a>
-        </div>
-      </div>
-    </div>
-    <div class="foot-bottom">
-      <span>&copy; 2026 Tiffin Trails. Registered in Germany &middot; All meals prepared in certified home kitchens.</span>
-      <span><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Cookies</a><a href="#">Allergen Info</a></span>
+  <div class="wrap" style="max-width:960px;">
+    <div class="foot-row">
+      <span>&copy; 2026 Tiffin Trail.</span>
+      <span><a href="mailto:hello@tiffintrail.com">hello@tiffintrail.com</a></span>
     </div>
   </div>
 </footer>
@@ -608,33 +240,6 @@ footer h4{ font-family:var(--mono); font-size:12px; letter-spacing:.12em; text-t
 <style>.visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}</style>
 
 <script>
-// Mobile nav toggle
-const navToggle = document.getElementById('navToggle');
-const navLinks = document.getElementById('navLinks');
-navToggle.addEventListener('click', () => {
-  const open = navLinks.classList.toggle('open');
-  navToggle.setAttribute('aria-expanded', open);
-});
-navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-  navLinks.classList.remove('open');
-  navToggle.setAttribute('aria-expanded', 'false');
-}));
-
-// Scroll reveal
-const revealEls = document.querySelectorAll('.reveal');
-if ('IntersectionObserver' in window){
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
-  }, { threshold: 0.15 });
-  revealEls.forEach(el => io.observe(el));
-} else {
-  revealEls.forEach(el => el.classList.add('in'));
-}
-
-// Waitlist forms — simple one-field join flow.
-// NOTE: this only validates and shows a confirmation state in the browser.
-// Wire the fetch() call below to a real backend (Formspree, Getform, Mailchimp, etc.)
-// before launch — see README.md.
 function handleWaitlist(formEl){
   const emailInput = formEl.querySelector('input[type="email"]');
   const errorEl = formEl.querySelector('.form-error');
@@ -674,7 +279,7 @@ function handleWaitlist(formEl){
     button.textContent = 'Joining…';
 
     // Placeholder for the real submission — swap in a fetch() to your
-    // waitlist backend here. Simulated delay so the state change feels real.
+    // waitlist backend here (Formspree, Getform, Mailchimp, etc.)
     setTimeout(() => {
       hideEls.forEach(el => el.classList.add('hidden'));
       successEl.classList.add('show');
