@@ -1,0 +1,11 @@
+<svg width="180" height="48" viewBox="0 0 180 48" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="ttLockupTitle">
+  <title id="ttLockupTitle">Tiffin Trails</title>
+  <g transform="translate(2,2)" fill="none" stroke="#23201B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M9 3c-1 1 1 2 0 3"/>
+    <path d="M15 3c-1 1 1 2 0 3"/>
+    <path d="M3 11h18"/>
+    <path d="M4 11a8 6 0 0 0 16 0"/>
+  </g>
+  <text x="38" y="20" font-family="'Bricolage Grotesque', 'Arial Black', sans-serif" font-weight="700" font-size="19" fill="#23201B" letter-spacing="0.2">Tiffin Trails</text>
+  <text x="38" y="34" font-family="'IBM Plex Mono', monospace" font-weight="500" font-size="9" letter-spacing="2.2" fill="#4B6043">HOME-COOKED &#183; DELIVERED</text>
+</svg>
