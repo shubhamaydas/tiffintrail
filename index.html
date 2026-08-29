@@ -1,252 +1,568 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tiffin Trail — Home-cooked meals, coming soon</title>
-<meta name="description" content="Tiffin Trail is bringing home-cooked meals to your door in returnable steel tiffin boxes. Join the waitlist to be first to know when we launch.">
-
-<meta property="og:title" content="Tiffin Trail — Coming soon">
-<meta property="og:description" content="Home-cooked meals, delivered in returnable steel tiffin boxes. Join the waitlist.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://tiffintrail.com/">
-
-<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-
+<title>Tiffin Trails</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,800;0,900;1,800;1,900&family=DM+Sans:wght@300;400;500&display=swap">
 
 <style>
-:root{
-  --ink:       #1C1C1C;
-  --ink-soft:  #5A5A5A;
-  --line:      #E3E1DC;
-  --paper:     #FFFFFF;
-  --paper-alt: #FAFAF8;
-  --accent:    #C4622D;
-  --accent-d:  #A24F22;
+  /* ── Tokens ─────────────────────────────────────────── */
+  :root {
+    --green:       #1a6b30;
+    --green-light: #1a6b30;
+    --green-pill:  rgba(26,107,48,0.92);
+    --nav-bg:      rgba(255, 252, 248, 0.92);
+    --nav-border:  rgba(0,0,0,0.07);
+    --hero-overlay-start: rgba(30, 52, 22, 0.55);
+    --hero-overlay-end:   rgba(20, 38, 16, 0.78);
+    --text-white:  #FFFFFF;
+    --text-cream:  rgba(255,255,255,0.85);
+  }
 
-  --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --container: 720px;
-}
+  /* ── Reset ───────────────────────────────────────────── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    background: #1a2e14;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  a { color: inherit; text-decoration: none; }
 
-*,*::before,*::after{ box-sizing:border-box; }
-html{ scroll-behavior:smooth; }
-@media (prefers-reduced-motion: reduce){
-  html{ scroll-behavior:auto; }
-  *,*::before,*::after{ transition-duration:0.001ms !important; }
-}
+  /* ── HERO WRAPPER (full viewport) ────────────────────── */
+  .hero-section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+  }
 
-body{
-  margin:0;
-  background:var(--paper);
-  color:var(--ink);
-  font-family:var(--font);
-  font-size:16px;
-  line-height:1.6;
-  -webkit-font-smoothing:antialiased;
-}
+  /* Video background */
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+  }
+  .hero-bg video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
 
-h1,h2{ margin:0; color:var(--ink); font-weight:700; letter-spacing:-0.01em; }
-p{ margin:0; }
-a{ color:inherit; }
-img,svg{ display:block; max-width:100%; }
-button{ font-family:inherit; cursor:pointer; }
+  /* Thin overlay just for text legibility */
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: radial-gradient(
+      ellipse 90% 70% at 50% 45%,
+      rgba(0,0,0,0.10) 0%,
+      rgba(0,0,0,0.55) 100%
+    );
+  }
 
-.wrap{ max-width:var(--container); margin:0 auto; padding:0 24px; }
+  /* ── FLOATING NAV ────────────────────────────────────── */
+  nav {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    padding: 20px 24px 0;
+    display: flex;
+    justify-content: center;
+  }
+  .nav-card {
+    background: var(--nav-bg);
+    border: 1px solid var(--nav-border);
+    border-radius: 16px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    width: 100%;
+    max-width: 1100px;
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+  }
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .nav-logo {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 900;
+    font-size: 20px;
+    color: var(--green);
+    letter-spacing: -0.03em;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .nav-logo-icon {
+    width: 18px;
+    height: 18px;
+    color: var(--green);
+  }
+  .nav-divider {
+    width: 1px;
+    height: 28px;
+    background: rgba(0,0,0,0.15);
+  }
+  .nav-tagline {
+    font-size: 11px;
+    font-weight: 400;
+    color: #666;
+    line-height: 1.3;
+  }
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+  }
+  .nav-link {
+    font-size: 14px;
+    font-weight: 400;
+    color: #333;
+    transition: color 0.2s;
+  }
+  .nav-link:hover { color: var(--green); }
+  .nav-cta {
+    background: var(--green);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--green-light); }
+  .nav-cta-icons {
+    display: flex;
+    gap: 4px;
+  }
+  .nav-cta-icons svg {
+    width: 15px;
+    height: 15px;
+    fill: rgba(255,255,255,0.9);
+  }
 
-:focus-visible{
-  outline:2px solid var(--accent);
-  outline-offset:3px;
-  border-radius:4px;
-}
+  /* ── HERO CONTENT ────────────────────────────────────── */
+  .hero-content {
+    position: relative;
+    z-index: 5;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 24px 80px;
+    gap: 0;
+  }
 
-/* ---------- NAV ---------- */
-.nav{
-  border-bottom:1px solid var(--line);
-}
-.nav .wrap{
-  display:flex; align-items:center; justify-content:space-between;
-  height:72px; max-width:960px;
-}
-.brand{ display:flex; align-items:center; gap:10px; text-decoration:none; }
-.brand svg{ width:22px; height:22px; }
-.brand-word{ font-weight:700; font-size:17px; color:var(--ink); }
-.nav-cta{
-  background:var(--ink); color:var(--paper) !important;
-  padding:9px 18px; border-radius:6px; font-size:14px; font-weight:600;
-  text-decoration:none;
-}
-.nav-cta:hover{ background:var(--accent-d) !important; }
+  .hero-headline {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 0.92;
+    margin-bottom: 28px;
+  }
+  .hero-word-good {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 900;
+    font-style: normal;
+    font-size: clamp(96px, 16vw, 200px);
+    color: var(--text-white);
+    letter-spacing: -0.02em;
+  }
+  .hero-word-food {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 900;
+    font-style: italic;
+    font-size: clamp(80px, 13.5vw, 172px);
+    color: var(--text-white);
+    letter-spacing: -0.02em;
+    margin-top: -8px;
+  }
 
-/* ---------- HERO ---------- */
-.hero{ padding:88px 0 56px; text-align:center; }
-.eyebrow{
-  display:inline-block; font-size:13px; font-weight:600; letter-spacing:.04em;
-  color:var(--accent-d); background:#FBEDE3; padding:6px 14px; border-radius:100px;
-  margin-bottom:24px;
-}
-.hero h1{
-  font-size:clamp(2.1rem, 4.2vw, 3rem); line-height:1.15;
-}
-.hero-sub{
-  margin:20px auto 0; max-width:52ch; font-size:1.08rem; color:var(--ink-soft);
-}
+  .hero-sub {
+    font-size: clamp(18px, 2.5vw, 26px);
+    font-weight: 300;
+    color: var(--text-cream);
+    line-height: 1.55;
+    margin-bottom: 44px;
+  }
+  .hero-sub em {
+    font-style: italic;
+    font-weight: 500;
+    color: #fff;
+  }
 
-/* ---------- FORM ---------- */
-.hero-form{ margin-top:36px; }
-.form-row{ display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
-.form-row input{
-  flex:1 1 260px; min-width:0; max-width:320px;
-  padding:13px 16px; border-radius:6px; border:1.5px solid var(--line);
-  background:var(--paper); font-family:var(--font); font-size:15px; color:var(--ink);
-}
-.form-row input:focus{ border-color:var(--accent); }
-.btn-primary{
-  border:none; background:var(--accent); color:#fff;
-  padding:13px 24px; border-radius:6px; font-weight:600; font-size:15px;
-  white-space:nowrap; transition:background .15s ease;
-}
-.btn-primary:hover{ background:var(--accent-d); }
-.btn-primary:disabled{ opacity:.7; cursor:progress; }
-.form-note{ margin-top:14px; font-size:13px; color:var(--ink-soft); }
-.form-error{
-  display:none; margin:10px 0 0; font-size:13.5px; font-weight:600; color:#B3261E;
-}
-.form-error.show{ display:block; }
-.form-row input.invalid{ border-color:#B3261E; }
-.form-success{
-  display:none; align-items:center; justify-content:center; gap:10px; margin-top:18px;
-  padding:14px 18px; border-radius:6px;
-  background:#F1F6EF; color:#2F6B33; font-weight:600; font-size:14.5px;
-}
-.form-success svg{ flex:none; }
-.form-success.show{ display:flex; }
-.hide-on-submit.hidden{ display:none; }
+  /* Three trust badges */
+  .hero-badges {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 48px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .hero-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .badge-icon {
+    width: 32px;
+    height: 32px;
+    color: var(--green-light);
+  }
+  .badge-label {
+    font-size: 13px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.80);
+    text-align: center;
+    line-height: 1.35;
+  }
 
-/* ---------- INFO ---------- */
-.info{ padding:56px 0; border-top:1px solid var(--line); }
-.info .wrap{ display:grid; gap:36px; }
-.info-item h2{ font-size:1.15rem; margin-bottom:8px; }
-.info-item p{ color:var(--ink-soft); font-size:.98rem; }
+  /* Announcement pill */
+  .hero-announce {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--green-pill);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 12px 20px 12px 20px;
+    border-radius: 100px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.15);
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .hero-announce:hover { background: rgba(26,107,48,1); }
+  .announce-arrow {
+    width: 22px;
+    height: 22px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .announce-arrow svg {
+    width: 12px;
+    height: 12px;
+  }
 
-/* ---------- FOOTER ---------- */
-footer{ border-top:1px solid var(--line); padding:32px 0; }
-.foot-row{
-  display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;
-  font-size:13px; color:var(--ink-soft);
-}
-.foot-row a{ text-decoration:none; color:var(--ink-soft); }
-.foot-row a:hover{ color:var(--accent-d); }
+  /* ── RESPONSIVE ──────────────────────────────────────── */
+  @media (max-width: 600px) {
+    .nav-card { flex-wrap: wrap; gap: 12px; }
+    .hero-badges { gap: 24px; }
+    .nav-right { gap: 16px; }
+  }
 
-@media (max-width: 520px){
-  .form-row{ flex-direction:column; align-items:stretch; }
-  .form-row input{ max-width:none; }
-}
+  /* ── WAITLIST MODAL ──────────────────────────────────── */
+  .modal-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background: rgba(0,0,0,0.55);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+  .modal-backdrop.open { display: flex; }
+  .modal-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 40px 36px 36px;
+    width: 100%;
+    max-width: 440px;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.22);
+    position: relative;
+    animation: modalIn 0.25s cubic-bezier(0.34,1.56,0.64,1);
+  }
+  @keyframes modalIn {
+    from { opacity: 0; transform: scale(0.92) translateY(16px); }
+    to   { opacity: 1; transform: scale(1) translateY(0); }
+  }
+  .modal-close {
+    position: absolute;
+    top: 16px; right: 16px;
+    width: 32px; height: 32px;
+    border: none; background: #f2f2f2;
+    border-radius: 50%; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    color: #555; font-size: 16px; line-height: 1;
+    transition: background 0.15s;
+  }
+  .modal-close:hover { background: #e4e4e4; }
+  .modal-logo {
+    display: flex; align-items: center; gap: 6px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 900; font-size: 18px;
+    color: var(--green);
+    margin-bottom: 20px;
+  }
+  .modal-logo svg { width: 18px; height: 18px; }
+  .modal-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    font-size: 26px;
+    color: #111;
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+  .modal-sub {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 28px;
+    line-height: 1.5;
+  }
+  .modal-input-wrap {
+    position: relative;
+    margin-bottom: 14px;
+  }
+  .modal-input-wrap svg {
+    position: absolute;
+    left: 14px; top: 50%;
+    transform: translateY(-50%);
+    width: 18px; height: 18px;
+    color: #aaa;
+  }
+  .modal-input {
+    width: 100%;
+    padding: 14px 14px 14px 42px;
+    border: 1.5px solid #e0e0e0;
+    border-radius: 12px;
+    font-size: 15px;
+    font-family: 'DM Sans', sans-serif;
+    color: #111;
+    outline: none;
+    transition: border-color 0.2s;
+    background: #fafafa;
+  }
+  .modal-input:focus { border-color: var(--green); background: #fff; }
+  .modal-btn {
+    width: 100%;
+    padding: 15px;
+    background: var(--green);
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: 'DM Sans', sans-serif;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    margin-top: 4px;
+  }
+  .modal-btn:hover { background: #155827; }
+  .modal-btn:active { transform: scale(0.98); }
+  .modal-success {
+    display: none;
+    text-align: center;
+    padding: 20px 0 8px;
+  }
+  .modal-success-icon {
+    width: 56px; height: 56px;
+    background: #eaf6ee;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 16px;
+    color: var(--green);
+  }
+  .modal-success h3 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    color: #111;
+    margin-bottom: 8px;
+  }
+  .modal-success p { font-size: 14px; color: #666; line-height: 1.5; }
+  .modal-note {
+    font-size: 12px;
+    color: #aaa;
+    text-align: center;
+    margin-top: 16px;
+    line-height: 1.4;
+  }
+  .hidden { display: none !important; }
+  .hide-on-submit.hidden { display: none !important; }
+  .form-error { display: none; color: #B3261E; font-size: 13px; font-weight: 600; margin: 8px 0 0; }
+  .form-error.show { display: block; }
+  .modal-input.invalid { border-color: #B3261E; }
+  .form-success {
+    display: none;
+    align-items: center; justify-content: center; gap: 10px;
+    margin-top: 18px; padding: 14px 18px; border-radius: 10px;
+    background: #eaf6ee; color: #1a6b30;
+    font-weight: 600; font-size: 14px;
+  }
+  .form-success.show { display: flex; }
 </style>
-</head>
-<body>
 
-<nav class="nav">
-  <div class="wrap">
-    <a href="#top" class="brand">
-      <svg viewBox="0 0 24 24" fill="none" stroke="#1C1C1C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M9 3c-1 1 1 2 0 3"/>
-        <path d="M15 3c-1 1 1 2 0 3"/>
-        <path d="M3 11h18"/>
-        <path d="M4 11a8 6 0 0 0 16 0"/>
-      </svg>
-      <span class="brand-word">Tiffin Trail</span>
+<section class="hero-section">
+
+  <!-- Food video background -->
+  <div class="hero-bg">
+    <video id="bgVideo" src="assets/making_Food_short_video_should.mp4" autoplay muted loop playsinline></video>
+  </div>
+
+  <!-- Green-dark overlay -->
+  <div class="hero-overlay"></div>
+
+  <!-- FLOATING NAV -->
+  <nav>
+    <div class="nav-card">
+      <div class="nav-brand">
+        <div class="nav-logo">
+          <!-- tiffin trails flame/tiffin icon -->
+          <svg class="nav-logo-icon" viewBox="0 0 18 18" fill="none">
+            <path d="M9 2C9 2 5 6 5 9.5a4 4 0 0 0 8 0C13 6 9 2 9 2z" fill="#1a6b30"/>
+            <path d="M9 8C9 8 7 10 7 11.5a2 2 0 0 0 4 0C11 10 9 8 9 8z" fill="#fff" opacity="0.7"/>
+          </svg>
+          Tiffin Trails
+        </div>
+        <div class="nav-divider"></div>
+        <div class="nav-tagline">Fresh food<br>in minutes</div>
+      </div>
+      <div class="nav-right">
+        <a href="#" class="nav-cta" onclick="openWaitlist(event)">
+          Join Waitlist
+          <div class="nav-cta-icons">
+            <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M3.18 23.76c.3.17.65.2.98.09l12.38-7.02-2.6-2.6-10.76 9.53zM.54 2.15C.2 2.51 0 3.08 0 3.8v16.4c0 .72.2 1.29.54 1.65l.09.09 9.19-9.19v-.22L.63 3.06l-.09.09zM20.29 10.27l-2.61-1.48L14.9 11.6l2.78 2.78 2.62-1.49c.75-.43.75-1.19-.01-1.62zM3.18.24L15.56 7.26l-2.59 2.59L2.2.32l.98-.08z"/></svg>
+          </div>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO CONTENT -->
+  <div class="hero-content">
+    <div class="hero-headline">
+      <span class="hero-word-good">GOOD</span>
+      <span class="hero-word-food">FOOD</span>
+    </div>
+
+    <p class="hero-sub">
+      Made by <em>us</em><br>
+      Delivered by <em>us</em>
+    </p>
+
+    <div class="hero-badges">
+      <div class="hero-badge">
+        <!-- Award icon -->
+        <svg class="badge-icon" viewBox="0 0 32 32" fill="none">
+          <circle cx="16" cy="14" r="8" stroke="currentColor" stroke-width="1.8"/>
+          <path d="M12 22l-2 8 6-3 6 3-2-8" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+          <circle cx="16" cy="14" r="3" fill="currentColor" opacity="0.4"/>
+          <path d="M16 8v2M16 18v2M10 14h2M20 14h2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <span class="badge-label">Top-Rated<br>Chefs</span>
+      </div>
+      <div class="hero-badge">
+        <!-- Shield check icon -->
+        <svg class="badge-icon" viewBox="0 0 32 32" fill="none">
+          <path d="M16 4L6 8v8c0 6.63 4.33 12.82 10 14 5.67-1.18 10-7.37 10-14V8L16 4z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" fill="currentColor" fill-opacity="0.15"/>
+          <path d="M11 16l3.5 3.5L21 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="badge-label">High-Quality<br>Ingredients</span>
+      </div>
+    </div>
+
+    <a href="#" class="hero-announce" onclick="openWaitlist(event)">
+      Join the Waitlist — be first to taste
+      <div class="announce-arrow">
+        <svg viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M2.5 6h7M6.5 3l3 3-3 3"/>
+        </svg>
+      </div>
     </a>
-    <a href="#waitlist" class="nav-cta">Join Waitlist</a>
   </div>
-</nav>
 
-<main id="top">
+</section>
 
-  <section class="hero">
-    <div class="wrap">
-      <span class="eyebrow">Coming soon</span>
-      <h1>Home-cooked meals, delivered to your door.</h1>
-      <p class="hero-sub">We're building a way to get real, home-cooked meals to you — served in a returnable steel tiffin box, no single-use packaging. We're not live yet. Join the waitlist and we'll email you the moment we are.</p>
+<!-- WAITLIST MODAL -->
+<div class="modal-backdrop" id="waitlistModal" onclick="handleBackdropClick(event)">
+  <div class="modal-card">
+    <button class="modal-close" onclick="closeWaitlist()">&#x2715;</button>
 
-      <form class="hero-form join-form" id="waitlistForm" novalidate>
-        <div class="form-row hide-on-submit">
-          <label class="visually-hidden" for="hemail">Email address</label>
-          <input type="email" id="hemail" name="email" placeholder="Enter your email" required inputmode="email" autocomplete="email">
-          <button type="submit" class="btn-primary">Join the Waitlist</button>
-        </div>
-        <p class="form-error" role="alert"></p>
-        <p class="form-note hide-on-submit">No spam. Just one email, the day we launch.</p>
-        <div class="form-success" role="status">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
-          <span>You're on the list — we'll email you when we launch.</span>
-        </div>
-      </form>
+    <div class="modal-logo">
+      <svg viewBox="0 0 18 18" fill="none">
+        <path d="M9 2C9 2 5 6 5 9.5a4 4 0 0 0 8 0C13 6 9 2 9 2z" fill="#1a6b30"/>
+        <path d="M9 8C9 8 7 10 7 11.5a2 2 0 0 0 4 0C11 10 9 8 9 8z" fill="#fff" opacity="0.7"/>
+      </svg>
+      Tiffin Trails
     </div>
-  </section>
 
-  <section class="info">
-    <div class="wrap">
-      <div class="info-item">
-        <h2>What Tiffin Trail is</h2>
-        <p>A home-cooked meal delivery service, currently in development. We're not taking orders yet — this page exists to let people register interest ahead of launch.</p>
-      </div>
-      <div class="info-item">
-        <h2>The tiffin box</h2>
-        <p>Meals will be delivered in a returnable steel tiffin box, collected and reused rather than thrown away. Details on how pickup and delivery will work are still being finalised.</p>
-      </div>
-      <div class="info-item">
-        <h2>Where and when</h2>
-        <p>Launch city, dates, and menu are not yet confirmed. Waitlist members will be the first to hear as these are decided.</p>
-      </div>
-    </div>
-  </section>
+    <form id="waitlistForm" novalidate>
+      <div class="modal-title hide-on-submit">Get early access 🎉</div>
+      <p class="modal-sub hide-on-submit">Join the waitlist and be among the first to enjoy fresh, chef-made food delivered in minutes.</p>
 
-  <section id="waitlist" class="info" style="border-top:1px solid var(--line);">
-    <div class="wrap" style="text-align:center;">
-      <div class="info-item">
-        <h2>Stay in the loop</h2>
-        <p>Leave your email and we'll reach out with real updates only — no filler.</p>
+      <div class="modal-input-wrap hide-on-submit">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"/>
+          <polyline points="22,6 12,13 2,6"/>
+        </svg>
+        <input class="modal-input" type="email" name="email" placeholder="Enter your email address" required inputmode="email" autocomplete="email">
       </div>
-      <form class="hero-form join-form" id="waitlistForm2" novalidate style="margin-top:24px;">
-        <div class="form-row hide-on-submit">
-          <label class="visually-hidden" for="femail">Email address</label>
-          <input type="email" id="femail" name="email" placeholder="Enter your email" required inputmode="email" autocomplete="email">
-          <button type="submit" class="btn-primary">Join the Waitlist</button>
-        </div>
-        <p class="form-error" role="alert"></p>
-        <p class="form-note hide-on-submit">No spam. Just one email, the day we launch.</p>
-        <div class="form-success" role="status">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
-          <span>You're on the list — we'll email you when we launch.</span>
-        </div>
-      </form>
-    </div>
-  </section>
 
-</main>
+      <p class="form-error" role="alert"></p>
 
-<footer>
-  <div class="wrap" style="max-width:960px;">
-    <div class="foot-row">
-      <span>&copy; 2026 Tiffin Trail.</span>
-      <span><a href="mailto:hello@tiffintrail.com">hello@tiffintrail.com</a></span>
-    </div>
+      <button class="modal-btn hide-on-submit" type="submit">Join the Waitlist</button>
+      <p class="modal-note hide-on-submit">No spam, ever. We'll only reach out when we're ready to welcome you.</p>
+
+      <div class="form-success" role="status">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+        <span>You're on the list — we'll email you when we launch! 🙌</span>
+      </div>
+    </form>
   </div>
-</footer>
+</div>
 
-<style>.visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}</style>
 
 <script>
+/* ── Modal open/close ── */
+function openWaitlist(e) {
+  if (e) e.preventDefault();
+  document.getElementById('waitlistModal').classList.add('open');
+  setTimeout(function(){ var el = document.querySelector('#waitlistForm input[type="email"]'); if(el) el.focus(); }, 50);
+}
+function closeWaitlist() {
+  document.getElementById('waitlistModal').classList.remove('open');
+}
+function handleBackdropClick(e) {
+  if (e.target === document.getElementById('waitlistModal')) closeWaitlist();
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeWaitlist();
+});
+
+/* ── Waitlist form handler (from tiffintrail index.html) ── */
 function handleWaitlist(formEl){
+  if (!formEl) return;
   const emailInput = formEl.querySelector('input[type="email"]');
   const errorEl = formEl.querySelector('.form-error');
   const successEl = formEl.querySelector('.form-success');
   const hideEls = formEl.querySelectorAll('.hide-on-submit');
   const button = formEl.querySelector('button');
-
   function showError(msg){
     errorEl.textContent = msg;
     errorEl.classList.add('show');
@@ -258,13 +574,10 @@ function handleWaitlist(formEl){
     errorEl.classList.remove('show');
     emailInput.classList.remove('invalid');
   }
-
   emailInput.addEventListener('input', clearError);
-
   formEl.addEventListener('submit', (e) => {
     e.preventDefault();
     const value = emailInput.value.trim();
-
     if (!value){
       showError('Enter your email to join the waitlist.');
       return;
@@ -273,11 +586,9 @@ function handleWaitlist(formEl){
       showError('That email doesn\'t look quite right — check for typos.');
       return;
     }
-
     clearError();
     button.disabled = true;
     button.textContent = 'Joining…';
-
     // Placeholder for the real submission — swap in a fetch() to your
     // waitlist backend here (Formspree, Getform, Mailchimp, etc.)
     setTimeout(() => {
@@ -293,5 +604,6 @@ handleWaitlist(document.getElementById('waitlistForm'));
 handleWaitlist(document.getElementById('waitlistForm2'));
 </script>
 
-</body>
-</html>
+<script>
+document.getElementById('bgVideo').src = 'assets/making_Food_short_video_should.mp4';
+</script>
