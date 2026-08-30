@@ -66,10 +66,13 @@
 
   /* ── FLOATING NAV ────────────────────────────────────── */
   nav {
-    position: relative;
-    z-index: 10;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
     width: 100%;
-    padding: 20px 24px 0;
+    padding: 12px 24px 0;
     display: flex;
     justify-content: center;
   }
@@ -81,7 +84,7 @@
     -webkit-backdrop-filter: blur(12px);
     width: 100%;
     max-width: 1100px;
-    padding: 14px 24px;
+    padding: 6px 18px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -106,6 +109,11 @@
     width: 18px;
     height: 18px;
     color: var(--green);
+  }
+  .nav-logo-img {
+    height: 36px;
+    width: auto;
+    object-fit: contain;
   }
   .nav-divider {
     width: 1px;
@@ -432,7 +440,7 @@
     <div class="nav-card">
       <div class="nav-brand">
         <div class="nav-logo">
-          <img src="assets/logo-tiffintrail.png" alt="Tiffin Trails" class="nav-logo-img">
+          <img src="assets/logo-tiffintrail-clean.png" alt="Tiffin Trails" class="nav-logo-img">
         </div>
         <div class="nav-divider"></div>
         <div class="nav-tagline">Fresh food<br>in minutes</div>
